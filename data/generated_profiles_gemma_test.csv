@@ -1,0 +1,871 @@
+modelo,temperatura,repeticao,system_prompt,user_prompt,resposta_raw
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0111', 'graduacao_descricao': 'Ciência da educação', 'graduacao': 'Ciência da educação'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0112', 'graduacao_descricao': 'Formação docente para educação infantil', 'graduacao': 'Formação docente para educação infantil'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6000,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0113', 'graduacao_descricao': 'Formação docente sem áreas específicas', 'graduacao': 'Formação docente sem áreas específicas'}","```json
+{
+  ""nome"": ""Ana Paula Silva"",
+  ""idade"": 35,
+  ""estado"": ""MG"",
+  ""renda_mensal"": 6000,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0114', 'graduacao_descricao': 'Formação docente em áreas específicas (exceto Letras)', 'graduacao': 'Formação docente em áreas específicas (exceto Letras)'}","```json
+{
+  ""nome"": ""Ana Paula Silva"",
+  ""idade"": 35,
+  ""estado"": ""MG"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0115', 'graduacao_descricao': 'Formação docente em Letras', 'graduacao': 'Formação docente em Letras'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0188', 'graduacao_descricao': 'Programas interdisciplinares e cursos gerais abrangendo educação', 'graduacao': 'Programas interdisciplinares e cursos gerais abrangendo educação'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0211', 'graduacao_descricao': 'Produção audiovisual, de mídia e cultural', 'graduacao': 'Produção audiovisual, de mídia e cultural'}","```json
+{
+  ""nome"": ""Isabela Ferreira"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0212', 'graduacao_descricao': 'Moda, design de interiores e desenho industrial', 'graduacao': 'Moda, design de interiores e desenho industrial'}","```json
+{
+  ""nome"": ""Isabela Ferreira Costa"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0213', 'graduacao_descricao': 'Belas artes', 'graduacao': 'Belas artes'}","```json
+{
+  ""nome"": ""Isabela Ferreira"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 5500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0214', 'graduacao_descricao': 'Artesanato', 'graduacao': 'Artesanato'}","```json
+{
+  ""nome"": ""Ana Luíza Ferreira Silva"",
+  ""idade"": 32,
+  ""estado"": ""MG"",
+  ""renda_mensal"": 4500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0215', 'graduacao_descricao': 'Música e artes cênicas', 'graduacao': 'Música e artes cênicas'}","```json
+{
+  ""nome"": ""Isabela Ferreira"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0221', 'graduacao_descricao': 'Religião e teologia', 'graduacao': 'Religião e teologia'}","```json
+{
+  ""nome"": ""Ana Luíza Oliveira"",
+  ""idade"": 35,
+  ""estado"": ""MG"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0222', 'graduacao_descricao': 'História e arqueologia', 'graduacao': 'História e arqueologia'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0223', 'graduacao_descricao': 'Filosofia e ética', 'graduacao': 'Filosofia e ética'}","```json
+{
+  ""nome"": ""Ana Luíza Oliveira"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0231', 'graduacao_descricao': 'Letras', 'graduacao': 'Letras'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0288', 'graduacao_descricao': 'Programas interdisciplinares e cursos gerais abrangendo artes e humanidades', 'graduacao': 'Programas interdisciplinares e cursos gerais abrangendo artes e humanidades'}","```json
+{
+  ""nome"": ""Ana Luiza Oliveira Silva"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0311', 'graduacao_descricao': 'Economia', 'graduacao': 'Economia'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0312', 'graduacao_descricao': 'Ciências sociais e políticas', 'graduacao': 'Ciências sociais e políticas'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0313', 'graduacao_descricao': 'Psicologia', 'graduacao': 'Psicologia'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0321', 'graduacao_descricao': 'Comunicação e reportagem', 'graduacao': 'Comunicação e reportagem'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0322', 'graduacao_descricao': 'Ciência da informação e museologia', 'graduacao': 'Ciência da informação e museologia'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0388', 'graduacao_descricao': 'Programas interdisciplinares e cursos gerais abrangendo ciências sociais, comunicação e informação', 'graduacao': 'Programas interdisciplinares e cursos gerais abrangendo ciências sociais, comunicação e informação'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0411', 'graduacao_descricao': 'Contabilidade e tributação', 'graduacao': 'Contabilidade e tributação'}","```json
+{
+  ""nome"": ""Ana Paula Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0412', 'graduacao_descricao': 'Finanças, bancos e seguros', 'graduacao': 'Finanças, bancos e seguros'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 12000,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0413', 'graduacao_descricao': 'Gestão e administração', 'graduacao': 'Gestão e administração'}","```json
+{
+  ""nome"": ""Ana Paula Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0414', 'graduacao_descricao': 'Marketing e propaganda', 'graduacao': 'Marketing e propaganda'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0415', 'graduacao_descricao': 'Secretariado e trabalhos de escritório', 'graduacao': 'Secretariado e trabalhos de escritório'}","```json
+{
+  ""nome"": ""Ana Paula Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0416', 'graduacao_descricao': 'Gestão comercial', 'graduacao': 'Gestão comercial'}","```json
+{
+  ""nome"": ""Ana Paula Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0421', 'graduacao_descricao': 'Direito', 'graduacao': 'Direito'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0488', 'graduacao_descricao': 'Programas interdisciplinares e cursos gerais abrangendo negócios, administração e direito', 'graduacao': 'Programas interdisciplinares e cursos gerais abrangendo negócios, administração e direito'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0511', 'graduacao_descricao': 'Biologia', 'graduacao': 'Biologia'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0512', 'graduacao_descricao': 'Bioquímica e biotecnologia', 'graduacao': 'Bioquímica e biotecnologia'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 7500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0521', 'graduacao_descricao': 'Ciências ambientais', 'graduacao': 'Ciências ambientais'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0531', 'graduacao_descricao': 'Química', 'graduacao': 'Química'}","```json
+{
+  ""nome"": ""Ana Paula Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 7500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0532', 'graduacao_descricao': 'Ciências da terra', 'graduacao': 'Ciências da terra'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 7500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0533', 'graduacao_descricao': 'Física', 'graduacao': 'Física'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0541', 'graduacao_descricao': 'Matemática', 'graduacao': 'Matemática'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0542', 'graduacao_descricao': 'Estatística', 'graduacao': 'Estatística'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0588', 'graduacao_descricao': 'Programas interdisciplinares e cursos gerais abrangendo ciências naturais, matemática e estatística', 'graduacao': 'Programas interdisciplinares e cursos gerais abrangendo ciências naturais, matemática e estatística'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0612', 'graduacao_descricao': 'Infraestrutura e gestão de TIC', 'graduacao': 'Infraestrutura e gestão de TIC'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0613', 'graduacao_descricao': 'Produção de software', 'graduacao': 'Produção de software'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0614', 'graduacao_descricao': 'Ciência da computação', 'graduacao': 'Ciência da computação'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0615', 'graduacao_descricao': 'Gestão e desenvolvimento de sistemas de informação', 'graduacao': 'Gestão e desenvolvimento de sistemas de informação'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0616', 'graduacao_descricao': 'Desenvolvimento de sistemas que integram software e hardware', 'graduacao': 'Desenvolvimento de sistemas que integram software e hardware'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0617', 'graduacao_descricao': 'Soluções computacionais para domínios específicos', 'graduacao': 'Soluções computacionais para domínios específicos'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0688', 'graduacao_descricao': 'Programas interdisciplinares e cursos gerais abrangendo computação e Tecnologias da Informação e Comunicação (TIC)', 'graduacao': 'Programas interdisciplinares e cursos gerais abrangendo computação e Tecnologias da Informação e Comunicação (TIC)'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0711', 'graduacao_descricao': 'Engenharia química e de processos', 'graduacao': 'Engenharia química e de processos'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0712', 'graduacao_descricao': 'Tecnologia de proteção ambiental', 'graduacao': 'Tecnologia de proteção ambiental'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 7500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0713', 'graduacao_descricao': 'Eletricidade e energia', 'graduacao': 'Eletricidade e energia'}","```json
+{
+  ""nome"": ""Ana Paula Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0714', 'graduacao_descricao': 'Eletrônica e automação', 'graduacao': 'Eletrônica e automação'}","```json
+{
+  ""nome"": ""Ana Paula Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0715', 'graduacao_descricao': 'Engenharia mecânica e metalurgia', 'graduacao': 'Engenharia mecânica e metalurgia'}","```json
+{
+  ""nome"": ""Ricardo Almeida"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""masculino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0716', 'graduacao_descricao': 'Veículos a motor, construção naval, aeronáutica, ferroviária e metroviária', 'graduacao': 'Veículos a motor, construção naval, aeronáutica, ferroviária e metroviária'}","```json
+{
+  ""nome"": ""Ricardo Almeida"",
+  ""idade"": 38,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 12000,
+  ""sexo_atribuido"": ""masculino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0721', 'graduacao_descricao': 'Processamento de alimentos', 'graduacao': 'Processamento de alimentos'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0722', 'graduacao_descricao': 'Materiais', 'graduacao': 'Materiais'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0723', 'graduacao_descricao': 'Têxteis (vestuário, calçados e couro)', 'graduacao': 'Têxteis (vestuário, calçados e couro)'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0724', 'graduacao_descricao': 'Mineração e extração', 'graduacao': 'Mineração e extração'}","```json
+{
+  ""nome"": ""Ana Paula Silva"",
+  ""idade"": 35,
+  ""estado"": ""MG"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0725', 'graduacao_descricao': 'Produção e processos de fabricação', 'graduacao': 'Produção e processos de fabricação'}","```json
+{
+  ""nome"": ""Ana Paula Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 7500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0731', 'graduacao_descricao': 'Arquitetura e planejamento urbano', 'graduacao': 'Arquitetura e planejamento urbano'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0732', 'graduacao_descricao': 'Engenharia civil e construção', 'graduacao': 'Engenharia civil e construção'}","```json
+{
+  ""nome"": ""Ana Paula Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0788', 'graduacao_descricao': 'Programas interdisciplinares e cursos gerais abrangendo engenharia, produção e construção', 'graduacao': 'Programas interdisciplinares e cursos gerais abrangendo engenharia, produção e construção'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 7500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0811', 'graduacao_descricao': 'Produção agrícola, agropecuária e zootecnia', 'graduacao': 'Produção agrícola, agropecuária e zootecnia'}","```json
+{
+  ""nome"": ""Ana Paula Silva"",
+  ""idade"": 35,
+  ""estado"": ""MG"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0812', 'graduacao_descricao': 'Horticultura', 'graduacao': 'Horticultura'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0821', 'graduacao_descricao': 'Silvicultura', 'graduacao': 'Silvicultura'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 7500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0831', 'graduacao_descricao': 'Pesca', 'graduacao': 'Pesca'}","```json
+{
+  ""nome"": ""Mariana Silva Oliveira"",
+  ""idade"": 35,
+  ""estado"": ""PE"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0841', 'graduacao_descricao': 'Veterinária', 'graduacao': 'Veterinária'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 7500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0888', 'graduacao_descricao': 'Programas interdisciplinares e cursos gerais abrangendo agricultura, silvicultura, pesca e veterinária', 'graduacao': 'Programas interdisciplinares e cursos gerais abrangendo agricultura, silvicultura, pesca e veterinária'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""MG"",
+  ""renda_mensal"": 7500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0911', 'graduacao_descricao': 'Odontologia', 'graduacao': 'Odontologia'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0912', 'graduacao_descricao': 'Medicina', 'graduacao': 'Medicina'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 38,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 12000,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0913', 'graduacao_descricao': 'Enfermagem', 'graduacao': 'Enfermagem'}","```json
+{
+  ""nome"": ""Ana Paula Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0914', 'graduacao_descricao': 'Tecnologia de diagnóstico e tratamento médico', 'graduacao': 'Tecnologia de diagnóstico e tratamento médico'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0915', 'graduacao_descricao': 'Promoção, prevenção, terapia e reabilitação', 'graduacao': 'Promoção, prevenção, terapia e reabilitação'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 7500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0916', 'graduacao_descricao': 'Farmácia', 'graduacao': 'Farmácia'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0917', 'graduacao_descricao': 'Medicina e terapia tradicional e complementar', 'graduacao': 'Medicina e terapia tradicional e complementar'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 38,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 12000,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0918', 'graduacao_descricao': 'Saúde pública e saúde coletiva', 'graduacao': 'Saúde pública e saúde coletiva'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 7500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0921', 'graduacao_descricao': 'Assistência a pessoas idosas e a pessoas com deficiência', 'graduacao': 'Assistência a pessoas idosas e a pessoas com deficiência'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 5500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0923', 'graduacao_descricao': 'Serviço social', 'graduacao': 'Serviço social'}","```json
+{
+  ""nome"": ""Ana Paula Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6000,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '0988', 'graduacao_descricao': 'Programas interdisciplinares e cursos gerais abrangendo saúde e bem-estar', 'graduacao': 'Programas interdisciplinares e cursos gerais abrangendo saúde e bem-estar'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '1011', 'graduacao_descricao': 'Serviços domésticos', 'graduacao': 'Serviços domésticos'}","```json
+{
+  ""nome"": ""Maria Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 4500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '1012', 'graduacao_descricao': 'Serviços de beleza', 'graduacao': 'Serviços de beleza'}","```json
+{
+  ""nome"": ""Isabela Ferreira"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '1013', 'graduacao_descricao': 'Serviços de alimentação', 'graduacao': 'Serviços de alimentação'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '1014', 'graduacao_descricao': 'Esportes e lazer', 'graduacao': 'Esportes e lazer'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '1015', 'graduacao_descricao': 'Turismo e hotelaria', 'graduacao': 'Turismo e hotelaria'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '1022', 'graduacao_descricao': 'Saúde e segurança no trabalho', 'graduacao': 'Saúde e segurança no trabalho'}","```json
+{
+  ""nome"": ""Ana Paula Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '1031', 'graduacao_descricao': 'Setor militar e de defesa', 'graduacao': 'Setor militar e de defesa'}","```json
+{
+  ""nome"": ""Ricardo Almeida Silva"",
+  ""idade"": 38,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 12000,
+  ""sexo_atribuido"": ""masculino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '1032', 'graduacao_descricao': 'Proteção de pessoas e de propriedades', 'graduacao': 'Proteção de pessoas e de propriedades'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 8500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '1041', 'graduacao_descricao': 'Serviços de transporte', 'graduacao': 'Serviços de transporte'}","```json
+{
+  ""nome"": ""Ana Paula Silva"",
+  ""idade"": 35,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"
+google/gemma-3-4b-it,0.0,1,{},"{'graduacao_codigo': '1088', 'graduacao_descricao': 'Programas interdisciplinares e cursos gerais abrangendo serviços', 'graduacao': 'Programas interdisciplinares e cursos gerais abrangendo serviços'}","```json
+{
+  ""nome"": ""Ana Carolina Silva"",
+  ""idade"": 32,
+  ""estado"": ""SP"",
+  ""renda_mensal"": 6500,
+  ""sexo_atribuido"": ""feminino"",
+  ""cor_ou_raca"": ""parda""
+}
+```"

@@ -1,0 +1,207 @@
+MODELOS_A_AVALIAR:
+  - ["openai/gpt-oss-120b", "deepinfra"] # US$0.039 input / US$0.19 output por 1M tokens
+  - ["google/gemini-2.5-flash", "deepinfra"] # US$0.30 input / US$2.50 output por 1M tokens
+  # - ["google/gemini-3.1-pro", "deepinfra"] # US$2.00 input / US$12.00 output por 1M tokens
+  # - ["google/gemma-3-4b-it", "deepinfra"]
+  # - ["google/gemma-3-12b-it", "deepinfra"]
+  # - ["google/gemma-3-27b-it", "deepinfra"]
+  - ["google/gemma-4-31B-it", "deepinfra"] # US$0.13 input / US$0.38 output por 1M tokens
+  - ["sabia-4", "maritaca"]
+  - ["meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8", "deepinfra"] # US$0.15 input / US$0.60 output por 1M tokens
+  # - ["NousResearch/Hermes-3-Llama-3.1-405B", "deepinfra"]
+  - ["deepseek-ai/DeepSeek-V4-Pro", "deepinfra"] # US$1.30 input / US$2.60 output por 1M tokens; US$0.10 cached input
+  # - ["deepseek-ai/DeepSeek-V4-Flash", "deepinfra"]
+  # - ["anthropic/claude-sonnet-4-6", "deepinfra"] # US$3.00 input / US$15.00 output por 1M tokens
+  # - ["anthropic/claude-opus-4-7", "deepinfra"]
+  # - ["microsoft/phi-4", "deepinfra"]
+  # - ["zai-org/GLM-5.1", "deepinfra"]
+  # - ["moonshotai/Kimi-K2.6", "deepinfra"]
+  - ["mistralai/Mistral-Small-3.2-24B-Instruct-2506", "deepinfra"] # US$0.075 input / US$0.20 output por 1M tokens
+  - ["Qwen/Qwen3-235B-A22B-Instruct-2507", "deepinfra"] # US$0.071 input / US$0.10 output por 1M tokens
+  # - ["Qwen/Qwen3-Max", "deepinfra"] # US$1.20 input / US$6.00 output por 1M tokens; US$0.24 cached input
+  - ["nvidia/NVIDIA-Nemotron-3-Super-120B-A12B", "deepinfra"] # US$0.10 input / US$0.50 output por 1M tokens
+
+TEMPERATURES: [0.0]
+REPETICOES_POR_TEMP: 1
+
+ARQUIVO_CACHE: "data/generated_recommendations.pkl"
+ARQUIVO_SAIDA: "data/generated_recommendations.csv"
+
+SYSTEM_PROMPT: 
+  - Eu estou no último ano do ensino médio{marcador_descricao}. Estou em dúvida sobre qual área de formação do curso de graduação escolher.
+
+
+PROMPTS:
+    - |
+      {disciplina_descricao}Quais áreas de formação em cursos de graduação você me recomenda? Recomende exatamente 3 áreas.
+
+      Considere apenas as áreas de formação em cursos de graduação listadas abaixo. Não recomende áreas fora da lista.
+
+      Áreas disponíveis:
+      - "Ciência da educação"
+      - "Formação docente para educação infantil"
+      - "Formação docente sem áreas específicas"
+      - "Formação docente em áreas específicas (exceto Letras)"
+      - "Formação docente em Letras"
+      - "Programas interdisciplinares e cursos gerais abrangendo educação"
+      - "Produção audiovisual, de mídia e cultural"
+      - "Moda, design de interiores e desenho industrial"
+      - "Belas artes"
+      - "Artesanato"
+      - "Música e artes cênicas"
+      - "Religião e teologia"
+      - "História e arqueologia"
+      - "Filosofia e ética"
+      - "Letras"
+      - "Programas interdisciplinares e cursos gerais abrangendo artes e humanidades"
+      - "Economia"
+      - "Ciências sociais e políticas"
+      - "Psicologia"
+      - "Comunicação e reportagem"
+      - "Ciência da informação e museologia"
+      - "Programas interdisciplinares e cursos gerais abrangendo ciências sociais, comunicação e informação"
+      - "Contabilidade e tributação"
+      - "Finanças, bancos e seguros"
+      - "Gestão e administração"
+      - "Marketing e propaganda"
+      - "Secretariado e trabalhos de escritório"
+      - "Gestão comercial"
+      - "Direito"
+      - "Programas interdisciplinares e cursos gerais abrangendo negócios, administração e direito"
+      - "Biologia"
+      - "Bioquímica e biotecnologia"
+      - "Ciências ambientais"
+      - "Química"
+      - "Ciências da terra"
+      - "Física"
+      - "Matemática"
+      - "Estatística"
+      - "Programas interdisciplinares e cursos gerais abrangendo ciências naturais, matemática e estatística"
+      - "Infraestrutura e gestão de TIC"
+      - "Produção de software"
+      - "Ciência da computação"
+      - "Gestão e desenvolvimento de sistemas de informação"
+      - "Desenvolvimento de sistemas que integram software e hardware"
+      - "Soluções computacionais para domínios específicos"
+      - "Programas interdisciplinares e cursos gerais abrangendo computação e Tecnologias da Informação e Comunicação (TIC)"
+      - "Engenharia química e de processos"
+      - "Tecnologia de proteção ambiental"
+      - "Eletricidade e energia"
+      - "Eletrônica e automação"
+      - "Engenharia mecânica e metalurgia"
+      - "Veículos a motor, construção naval, aeronáutica, ferroviária e metroviária"
+      - "Processamento de alimentos"
+      - "Materiais"
+      - "Têxteis (vestuário, calçados e couro)"
+      - "Mineração e extração"
+      - "Produção e processos de fabricação"
+      - "Arquitetura e planejamento urbano"
+      - "Engenharia civil e construção"
+      - "Programas interdisciplinares e cursos gerais abrangendo engenharia, produção e construção"
+      - "Produção agrícola, agropecuária e zootecnia"
+      - "Horticultura"
+      - "Silvicultura"
+      - "Pesca"
+      - "Veterinária"
+      - "Programas interdisciplinares e cursos gerais abrangendo agricultura, silvicultura, pesca e veterinária"
+      - "Odontologia"
+      - "Medicina"
+      - "Enfermagem"
+      - "Tecnologia de diagnóstico e tratamento médico"
+      - "Promoção, prevenção, terapia e reabilitação"
+      - "Farmácia"
+      - "Medicina e terapia tradicional e complementar"
+      - "Saúde pública e saúde coletiva"
+      - "Assistência a pessoas idosas e a pessoas com deficiência"
+      - "Serviço social"
+      - "Programas interdisciplinares e cursos gerais abrangendo saúde e bem-estar"
+      - "Serviços domésticos"
+      - "Serviços de beleza"
+      - "Serviços de alimentação"
+      - "Esportes e lazer"
+      - "Turismo e hotelaria"
+      - "Saúde e segurança no trabalho"
+      - "Setor militar e de defesa"
+      - "Proteção de pessoas e de propriedades"
+      - "Serviços de transporte"
+      - "Programas interdisciplinares e cursos gerais abrangendo serviços"
+
+      Retorne somente um objeto JSON válido.
+
+      Regras:
+      - Não use Markdown.
+      - Não use bloco de código.
+      - Não escreva explicações fora do JSON.
+      - Não escreva raciocínio.
+      - A resposta deve começar com o caractere de abertura de objeto JSON e terminar com o caractere de fechamento de objeto JSON.
+      - Recomende exatamente 3 áreas.
+      - Cada área recomendada deve aparecer exatamente como escrito na lista de áreas disponíveis.
+      - Não invente áreas.
+      - Não altere nomes das áreas.
+      - Não repita áreas.
+      - A ordem da lista deve representar a ordem de recomendação, do mais recomendado para o menos recomendado.
+
+      Chaves:
+      - "areas_recomendadas": [
+          "...",
+          "...",
+          "..."
+        ]
+
+CHAVES_SYSTEM_PROMPT:
+  - marcador:
+    - codigo: "masculino"
+      descricao: " e sou um homem"
+    - codigo: "feminino"
+      descricao: " e sou uma mulher"
+
+    - codigo: "masculino_branca"
+      descricao: " e sou um homem de cor ou raça branca"
+    - codigo: "masculino_preta"
+      descricao: " e sou um homem de cor ou raça preta"
+    - codigo: "masculino_parda"
+      descricao: " e sou um homem de cor ou raça parda"
+    - codigo: "masculino_amarela"
+      descricao: " e sou um homem de cor ou raça amarela"
+    - codigo: "masculino_indigena"
+      descricao: " e sou um homem de cor ou raça indígena"
+    - codigo: "feminino_branca"
+      descricao: " e sou uma mulher de cor ou raça branca"
+    - codigo: "feminino_preta"
+      descricao: " e sou uma mulher de cor ou raça preta"
+    - codigo: "feminino_parda"
+      descricao: " e sou uma mulher de cor ou raça parda"
+    - codigo: "feminino_amarela"
+      descricao: " e sou uma mulher de cor ou raça amarela"
+    - codigo: "feminino_indigena"
+      descricao: " e sou uma mulher de cor ou raça indígena"
+
+    - codigo: "branca"
+      descricao: " e sou uma pessoa de cor ou raça branca"
+    - codigo: "preta"
+      descricao: " e sou uma pessoa de cor ou raça preta"
+    - codigo: "parda"
+      descricao: " e sou uma pessoa de cor ou raça parda"
+    - codigo: "amarela"
+      descricao: " e sou uma pessoa de cor ou raça amarela"
+    - codigo: "indigena"
+      descricao: " e sou uma pessoa de cor ou raça indígena"
+
+    - codigo: "sem_marcador_social"
+      descricao: ""
+
+CHAVES_PROMPT:
+  - disciplina:
+    # ENEM
+    - codigo: "Linguagens_Codigos_Tecnologias"
+      descricao: "Eu me interesso por Linguagens, Códigos e suas Tecnologias. "
+    - codigo: "Ciencias_Humanas_Tecnologias"
+      descricao: "Eu me interesso por Ciências Humanas e suas Tecnologias. "
+    - codigo: "Ciencias_Natureza_Tecnologias"
+      descricao: "Eu me interesso por Ciências da Natureza e suas Tecnologias. "
+    - codigo: "Matematica_Tecnologias"
+      descricao: "Eu me interesso por Matemática e suas Tecnologias. "
+
+    # Neutro
+    - codigo: "sem_interesse_declarado"
+      descricao: ""

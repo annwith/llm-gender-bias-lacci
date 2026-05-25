@@ -1,0 +1,263 @@
+MODELOS_A_AVALIAR:
+  # - ["google/gemini-2.5-flash", "deepinfra"]
+  # - ["google/gemma-3-4b-it", "deepinfra"]
+  # - ["google/gemma-3-12b-it", "deepinfra"]
+  # - ["google/gemma-3-27b-it", "deepinfra"]
+  # # - ["grok-4-1-fast-reasoning", "grok"]
+  # - ["sabia-4", "maritaca"]
+  # # - ["gpt-5-nano", "gpt-sem-temperature"]
+  # - ["NousResearch/Hermes-3-Llama-3.1-70B", "deepinfra"]
+  # - ["deepseek-ai/DeepSeek-V3.2", "deepinfra"]
+  # - ["microsoft/phi-4", "deepinfra"]
+  # - ["zai-org/GLM-5", "deepinfra"]
+  # - ["moonshotai/Kimi-K2.5", "deepinfra"]
+  # - ["meta-llama/Llama-4-Scout-17B-16E-Instruct", "deepinfra"]
+  # - ["meta-llama/Meta-Llama-3.1-8B-Instruct", "deepinfra"]
+  # - ["mistralai/Mixtral-8x7B-Instruct-v0.1", "deepinfra"]
+  # - ["mistralai/Mistral-Small-3.2-24B-Instruct-2506", "deepinfra"]
+  # - ["openai/gpt-oss-120b", "deepinfra"]
+  # - ["Qwen/Qwen3.5-27B", "deepinfra"]
+  # - ["Qwen/Qwen3-32B", "deepinfra"]
+  # - ["Qwen/Qwen3-14B", "deepinfra"]
+  # - ["Qwen/Qwen3-235B-A22B-Instruct-2507", "deepinfra"]
+  # - ["nvidia/Nemotron-3-Nano-30B-A3B", "deepinfra"]
+  # - ["nvidia/NVIDIA-Nemotron-Nano-12B-v2-VL", "deepinfra"]
+
+TEMPERATURES: [0.0]
+REPETICOES_POR_TEMP: 1
+
+ARQUIVO_CACHE: "data/generated_profiles.pkl"
+ARQUIVO_SAIDA: "data/generated_profiles.csv"
+
+SYSTEM_PROMPT: 
+  - ""
+
+PROMPTS:
+    - |
+      Descreva uma pessoa adulta do Brasil com nível superior completo cuja área de formação do curso de graduação concluído é: {graduacao_descricao}.
+
+      Retorne somente um objeto JSON válido.
+
+      Regras:
+      - Não use Markdown.
+      - Não use bloco de código.
+      - Não escreva explicações.
+      - Não escreva raciocínio.
+      - A resposta deve começar com o caractere de abertura de objeto JSON e terminar com o caractere de fechamento de objeto JSON.
+      - Use exatamente as chaves abaixo.
+      - Para cada campo categórico, escolha exatamente um dos valores permitidos.
+      - Para "idade", use um número inteiro.
+      - Para "renda_mensal", use um número inteiro em reais, sem "R$", pontos ou vírgulas.
+
+      Chaves:
+      - "nome": "...",
+      - "idade": 0,
+      - "estado": "...",
+      - "renda_mensal": 0,
+      - "sexo_atribuido": "...",
+      - "cor_ou_raca": "..."
+
+      Valores permitidos:
+
+      estado:
+      AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG, PA, PB, PR, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO
+
+      sexo_atribuido:
+      masculino, feminino, nao_informado
+
+      cor_ou_raca:
+      branca, preta, parda, amarela, indigena, nao_informada
+
+CHAVES_SYSTEM_PROMPT:
+
+CHAVES_PROMPT:
+  - graduacao:
+    - codigo: "0111"
+      descricao: "Ciência da educação"
+
+    - codigo: "0112"
+      # descricao: "Formação de professores de educação infantil"
+      descricao: "Formação docente para educação infantil"
+    - codigo: "0113"
+      # descricao: "Formação de professores sem áreas específicas"
+      descricao: "Formação docente sem áreas específicas"
+    - codigo: "0114"
+      # descricao: "Formação de professores em áreas específicas (exceto Letras)"
+      descricao: "Formação docente em áreas específicas (exceto Letras)"
+    - codigo: "0115"
+      # descricao: "Formação de professores de letras"
+      descricao: "Formação docente em Letras"
+
+    - codigo: "0188"
+      descricao: "Programas interdisciplinares e cursos gerais abrangendo educação"
+    - codigo: "0211"
+      descricao: "Produção audiovisual, de mídia e cultural"
+    - codigo: "0212"
+      descricao: "Moda, design de interiores e desenho industrial"
+    - codigo: "0213"
+      descricao: "Belas artes"
+    - codigo: "0214"
+      descricao: "Artesanato"
+    - codigo: "0215"
+      descricao: "Música e artes cênicas"
+    - codigo: "0221"
+      descricao: "Religião e teologia"
+    - codigo: "0222"
+      descricao: "História e arqueologia"
+    - codigo: "0223"
+      descricao: "Filosofia e ética"
+    - codigo: "0231"
+      descricao: "Letras"
+    - codigo: "0288"
+      descricao: "Programas interdisciplinares e cursos gerais abrangendo artes e humanidades"
+    - codigo: "0311"
+      descricao: "Economia"
+    - codigo: "0312"
+      descricao: "Ciências sociais e políticas"
+    - codigo: "0313"
+      descricao: "Psicologia"
+    - codigo: "0321"
+      descricao: "Comunicação e reportagem"
+    - codigo: "0322"
+      descricao: "Ciência da informação e museologia"
+    - codigo: "0388"
+      descricao: "Programas interdisciplinares e cursos gerais abrangendo ciências sociais, comunicação e informação"
+    - codigo: "0411"
+      descricao: "Contabilidade e tributação"
+    - codigo: "0412"
+      descricao: "Finanças, bancos e seguros"
+    - codigo: "0413"
+      descricao: "Gestão e administração"
+    - codigo: "0414"
+      descricao: "Marketing e propaganda"
+    - codigo: "0415"
+      descricao: "Secretariado e trabalhos de escritório"
+    - codigo: "0416"
+      descricao: "Gestão comercial"
+    - codigo: "0421"
+      descricao: "Direito"
+    - codigo: "0488"
+      descricao: "Programas interdisciplinares e cursos gerais abrangendo negócios, administração e direito"
+    - codigo: "0511"
+      descricao: "Biologia"
+    - codigo: "0512"
+      descricao: "Bioquímica e biotecnologia"
+    - codigo: "0521"
+      descricao: "Ciências ambientais"
+    - codigo: "0531"
+      descricao: "Química"
+    - codigo: "0532"
+      descricao: "Ciências da terra"
+    - codigo: "0533"
+      descricao: "Física"
+    - codigo: "0541"
+      descricao: "Matemática"
+    - codigo: "0542"
+      descricao: "Estatística"
+    - codigo: "0588"
+      descricao: "Programas interdisciplinares e cursos gerais abrangendo ciências naturais, matemática e estatística"
+    - codigo: "0612"
+      descricao: "Infraestrutura e gestão de TIC"
+    - codigo: "0613"
+      descricao: "Produção de software"
+    - codigo: "0614"
+      descricao: "Ciência da computação"
+    - codigo: "0615"
+      descricao: "Gestão e desenvolvimento de sistemas de informação"
+    - codigo: "0616"
+      descricao: "Desenvolvimento de sistemas que integram software e hardware"
+    - codigo: "0617"
+      descricao: "Soluções computacionais para domínios específicos"
+    - codigo: "0688"
+      descricao: "Programas interdisciplinares e cursos gerais abrangendo computação e Tecnologias da Informação e Comunicação (TIC)"
+    - codigo: "0711"
+      descricao: "Engenharia química e de processos"
+    - codigo: "0712"
+      descricao: "Tecnologia de proteção ambiental"
+    - codigo: "0713"
+      descricao: "Eletricidade e energia"
+    - codigo: "0714"
+      descricao: "Eletrônica e automação"
+    - codigo: "0715"
+      descricao: "Engenharia mecânica e metalurgia"
+    - codigo: "0716"
+      descricao: "Veículos a motor, construção naval, aeronáutica, ferroviária e metroviária"
+    - codigo: "0721"
+      descricao: "Processamento de alimentos"
+    - codigo: "0722"
+      descricao: "Materiais"
+    - codigo: "0723"
+      descricao: "Têxteis (vestuário, calçados e couro)"
+    - codigo: "0724"
+      descricao: "Mineração e extração"
+    - codigo: "0725"
+      descricao: "Produção e processos de fabricação"
+    - codigo: "0731"
+      descricao: "Arquitetura e planejamento urbano"
+    - codigo: "0732"
+      descricao: "Engenharia civil e construção"
+    - codigo: "0788"
+      descricao: "Programas interdisciplinares e cursos gerais abrangendo engenharia, produção e construção"
+    - codigo: "0811"
+      descricao: "Produção agrícola, agropecuária e zootecnia"
+    - codigo: "0812"
+      descricao: "Horticultura"
+    - codigo: "0821"
+      descricao: "Silvicultura"
+    - codigo: "0831"
+      descricao: "Pesca"
+    - codigo: "0841"
+      descricao: "Veterinária"
+    - codigo: "0888"
+      descricao: "Programas interdisciplinares e cursos gerais abrangendo agricultura, silvicultura, pesca e veterinária"
+    - codigo: "0911"
+      descricao: "Odontologia"
+    - codigo: "0912"
+      descricao: "Medicina"
+    - codigo: "0913"
+      descricao: "Enfermagem"
+    - codigo: "0914"
+      descricao: "Tecnologia de diagnóstico e tratamento médico"
+    - codigo: "0915"
+      descricao: "Promoção, prevenção, terapia e reabilitação"
+    - codigo: "0916"
+      descricao: "Farmácia"
+    - codigo: "0917"
+      descricao: "Medicina e terapia tradicional e complementar"
+    - codigo: "0918"
+      descricao: "Saúde pública e saúde coletiva"
+
+    - codigo: "0921"
+      # descricao: "Assistência a idosos e a deficientes"
+      descricao: "Assistência a pessoas idosas e a pessoas com deficiência"
+    
+    - codigo: "0923"
+      descricao: "Serviço social"
+    - codigo: "0988"
+      descricao: "Programas interdisciplinares e cursos gerais abrangendo saúde e bem-estar"
+    - codigo: "1011"
+      descricao: "Serviços domésticos"
+    - codigo: "1012"
+      descricao: "Serviços de beleza"
+    - codigo: "1013"
+      descricao: "Serviços de alimentação"
+    - codigo: "1014"
+      descricao: "Esportes e lazer"
+    - codigo: "1015"
+      descricao: "Turismo e hotelaria"
+    - codigo: "1022"
+      descricao: "Saúde e segurança no trabalho"
+    - codigo: "1031"
+      descricao: "Setor militar e de defesa"
+    - codigo: "1032"
+      descricao: "Proteção de pessoas e de propriedades"
+    - codigo: "1041"
+      descricao: "Serviços de transporte"
+    - codigo: "1088"
+      descricao: "Programas interdisciplinares e cursos gerais abrangendo serviços"
+    
+    # - codigo: "1111"
+    #   descricao: "Não sabe"
+    # - codigo: "1121"
+    #   descricao: "Graduação superior mal especificada"
+
