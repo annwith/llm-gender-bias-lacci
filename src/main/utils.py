@@ -32,8 +32,8 @@ client_deepinfra = AsyncOpenAI(api_key=DEEPINFRA_API_KEY, base_url="https://api.
 gemini_semaphore = asyncio.Semaphore(10)
 deepinfra_semaphore = asyncio.Semaphore(10)
 
-def gerar_chave_cache(modelo, system_prompt, prompt, temperatura, repeticao):
-    chave = f"{modelo}|{system_prompt}|{prompt}|{temperatura}|{repeticao}"
+def gerar_chave_cache(modelo, system_prompt, prompt, temperatura, repeticao, enviar_apenas_como_user, enviar_system_prompt_vazio):
+    chave = f"{modelo}|{system_prompt}|{prompt}|{temperatura}|{repeticao}|{enviar_apenas_como_user}|{enviar_system_prompt_vazio}"
     return hashlib.md5(chave.encode()).hexdigest()
 
 def carregar_cache(ARQUIVO_CACHE, logger):
@@ -69,12 +69,48 @@ def atualizar_cache_e_salvar_se_necessario(CONTADOR_NOVAS_RESPOSTAS, chave, valo
             logger.error(f"Erro no salvamento incremental: {e}")
     return CONTADOR_NOVAS_RESPOSTAS
 
-async def chamar_api_provider(abordagem, modelo, temperatura, system_prompt, user_prompt):
+def montar_messages(
+    system_prompt,
+    user_prompt,
+    enviar_system_prompt_vazio=True,
+):
+    messages = []
+
+    system_tem_conteudo = bool(
+        system_prompt and system_prompt.strip()
+    )
+
+    if system_tem_conteudo or enviar_system_prompt_vazio:
+        messages.append({
+            "role": "system",
+            "content": system_prompt,
+        })
+
+    messages.append({
+        "role": "user",
+        "content": user_prompt,
+    })
+
+    return messages
+
+async def chamar_api_provider(
+    abordagem, 
+    modelo, 
+    temperatura, 
+    system_prompt, 
+    user_prompt,
+    enviar_system_prompt_vazio=True
+):
+    messages = montar_messages(
+        system_prompt,
+        user_prompt,
+        enviar_system_prompt_vazio,
+    )
     response_content = ""
     if abordagem == 'ollama':
         response = client_ollama.chat(
             model=modelo,
-            messages=[{'role': 'system', 'content': system_prompt}, {'role': 'user', 'content': user_prompt}],
+            messages=messages,
             options={'temperature': temperatura}
         )
         response_content = response['message']['content']
@@ -82,8 +118,21 @@ async def chamar_api_provider(abordagem, modelo, temperatura, system_prompt, use
     elif abordagem == 'gemini':
         async with gemini_semaphore:
             gemini_model = client_genai.GenerativeModel(model_name=modelo)
+            contents = []
+            system_tem_conteudo = bool(
+                system_prompt and system_prompt.strip()
+            )
+            if system_tem_conteudo or enviar_system_prompt_vazio:
+                contents.append({
+                    "role": "model",
+                    "parts": system_prompt,
+                })
+            contents.append({
+                "role": "user",
+                "parts": user_prompt,
+            })
             gemini_resposta = await gemini_model.generate_content_async(
-                [{"role": "model", "parts": system_prompt}, {"role": "user", "parts": user_prompt}],
+                contents,
                 generation_config=client_genai.types.GenerationConfig(temperature=temperatura)
             )
             response_content = gemini_resposta.text
@@ -91,7 +140,7 @@ async def chamar_api_provider(abordagem, modelo, temperatura, system_prompt, use
     elif abordagem in ['gpt', 'gpt-sem-temperature']:
         kwargs = {
             "model": modelo,
-            "input": [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
+            "input": messages,
         }
         if abordagem == 'gpt':
              kwargs["temperature"] = temperatura
@@ -103,19 +152,23 @@ async def chamar_api_provider(abordagem, modelo, temperatura, system_prompt, use
             deepinfra_resposta = await client_deepinfra.chat.completions.create(
                 model=modelo,
                 temperature=temperatura,
-                messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
+                messages=messages
             )
             response_content = deepinfra_resposta.choices[0].message.content
     elif abordagem == 'maritaca':
         maritaca_resposta = cliente_maritaca.chat.completions.create(
             model=modelo,
             temperature=temperatura,
-            messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
+            messages=messages
         )
         response_content = maritaca_resposta.choices[0].message.content
     elif abordagem == 'grok':
         chat = client_grok.chat.create(model=modelo, temperature=temperatura)
-        chat.append(system(system_prompt))
+        system_tem_conteudo = bool(
+            system_prompt and system_prompt.strip()
+        )
+        if system_tem_conteudo or enviar_system_prompt_vazio:
+            chat.append(system(system_prompt))
         chat.append(user(user_prompt))
         grok_resposta = chat.sample()
         response_content = grok_resposta.content

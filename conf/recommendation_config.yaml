@@ -1,33 +1,34 @@
 MODELOS_A_AVALIAR:
-  # - ["google/gemini-2.5-flash", "deepinfra"]
-  # - ["google/gemma-3-4b-it", "deepinfra"]
-  # - ["google/gemma-3-12b-it", "deepinfra"]
-  # - ["google/gemma-3-27b-it", "deepinfra"]
-  # # - ["grok-4-1-fast-reasoning", "grok"]
+  # - ["openai/gpt-oss-120b", "deepinfra"] # US$0.039 input / US$0.19 output por 1M tokens
+  # - ["google/gemini-2.5-flash", "deepinfra"] # US$0.30 input / US$2.50 output por 1M tokens
+  # # - ["google/gemini-3.1-pro", "deepinfra"] # US$2.00 input / US$12.00 output por 1M tokens
+  # # - ["google/gemma-3-4b-it", "deepinfra"]
+  # # - ["google/gemma-3-12b-it", "deepinfra"]
+  # # - ["google/gemma-3-27b-it", "deepinfra"]
+  - ["google/gemma-4-31B-it", "deepinfra"] # US$0.13 input / US$0.38 output por 1M tokens
   # - ["sabia-4", "maritaca"]
-  # # - ["gpt-5-nano", "gpt-sem-temperature"]
-  # - ["NousResearch/Hermes-3-Llama-3.1-70B", "deepinfra"]
-  # - ["deepseek-ai/DeepSeek-V3.2", "deepinfra"]
-  # - ["microsoft/phi-4", "deepinfra"]
-  # - ["zai-org/GLM-5", "deepinfra"]
-  # - ["moonshotai/Kimi-K2.5", "deepinfra"]
-  # - ["meta-llama/Llama-4-Scout-17B-16E-Instruct", "deepinfra"]
-  # - ["meta-llama/Meta-Llama-3.1-8B-Instruct", "deepinfra"]
-  # - ["mistralai/Mixtral-8x7B-Instruct-v0.1", "deepinfra"]
-  # - ["mistralai/Mistral-Small-3.2-24B-Instruct-2506", "deepinfra"]
-  # - ["openai/gpt-oss-120b", "deepinfra"]
-  # - ["Qwen/Qwen3.5-27B", "deepinfra"]
-  # - ["Qwen/Qwen3-32B", "deepinfra"]
-  # - ["Qwen/Qwen3-14B", "deepinfra"]
-  # - ["Qwen/Qwen3-235B-A22B-Instruct-2507", "deepinfra"]
-  # - ["nvidia/Nemotron-3-Nano-30B-A3B", "deepinfra"]
-  # - ["nvidia/NVIDIA-Nemotron-Nano-12B-v2-VL", "deepinfra"]
+  # - ["meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8", "deepinfra"] # US$0.15 input / US$0.60 output por 1M tokens
+  # # - ["NousResearch/Hermes-3-Llama-3.1-405B", "deepinfra"]
+  # - ["deepseek-ai/DeepSeek-V4-Pro", "deepinfra"] # US$1.30 input / US$2.60 output por 1M tokens; US$0.10 cached input
+  # # - ["deepseek-ai/DeepSeek-V4-Flash", "deepinfra"]
+  # # - ["anthropic/claude-sonnet-4-6", "deepinfra"] # US$3.00 input / US$15.00 output por 1M tokens
+  # # - ["anthropic/claude-opus-4-7", "deepinfra"]
+  # # - ["microsoft/phi-4", "deepinfra"]
+  # # - ["zai-org/GLM-5.1", "deepinfra"]
+  # # - ["moonshotai/Kimi-K2.6", "deepinfra"]
+  # - ["mistralai/Mistral-Small-3.2-24B-Instruct-2506", "deepinfra"] # US$0.075 input / US$0.20 output por 1M tokens
+  # - ["Qwen/Qwen3-235B-A22B-Instruct-2507", "deepinfra"] # US$0.071 input / US$0.10 output por 1M tokens
+  # # - ["Qwen/Qwen3-Max", "deepinfra"] # US$1.20 input / US$6.00 output por 1M tokens; US$0.24 cached input
+  # - ["nvidia/NVIDIA-Nemotron-3-Super-120B-A12B", "deepinfra"] # US$0.10 input / US$0.50 output por 1M tokens
 
 TEMPERATURES: [0.0]
 REPETICOES_POR_TEMP: 1
 
 ARQUIVO_CACHE: "data/generated_recommendations.pkl"
 ARQUIVO_SAIDA: "data/generated_recommendations.csv"
+
+ENVIAR_APENAS_COMO_USER: true
+ENVIAR_SYSTEM_PROMPT_VAZIO: true
 
 SYSTEM_PROMPT: 
   - Eu estou no último ano do ensino médio{marcador_descricao}. Estou em dúvida sobre qual área de formação do curso de graduação escolher.

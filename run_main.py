@@ -15,7 +15,21 @@ from src.main.utils import expandir_templates, carregar_cache, expandir_template
 INTERVALO_SALVAMENTO = 5
 
 
-async def obter_resposta_modelo(cfg, contador, cache_respostas, system_prompt, prompt, abordagem, modelo, temperatura, repeticao, tentativa=1, max_tentativas=3):
+async def obter_resposta_modelo(
+    cfg, 
+    contador, 
+    cache_respostas, 
+    system_prompt, 
+    prompt, 
+    abordagem, 
+    modelo, 
+    temperatura, 
+    repeticao, 
+    enviar_apenas_como_user,
+    enviar_system_prompt_vazio,
+    tentativa=1, 
+    max_tentativas=3
+):
     """Obtém resposta do modelo com sistema de cache e retry.
     
     Args:
@@ -30,17 +44,33 @@ async def obter_resposta_modelo(cfg, contador, cache_respostas, system_prompt, p
         repeticao: Número da repetição
         tentativa: Tentativa atual (para retry)
         max_tentativas: Número máximo de tentativas
-        
+        enviar_apenas_como_user: Se True, envia apenas como usuário
+        enviar_system_prompt_vazio: Se True, envia o system prompt vazio
     Returns:
         String com a resposta do modelo ou mensagem de erro
     """
-    chave_cache = gerar_chave_cache(modelo, system_prompt, prompt, temperatura, repeticao)
+    chave_cache = gerar_chave_cache(
+        modelo, 
+        system_prompt, 
+        prompt, 
+        temperatura, 
+        repeticao,
+        enviar_apenas_como_user=enviar_apenas_como_user,
+        enviar_system_prompt_vazio=enviar_system_prompt_vazio
+    )
     
     if chave_cache in cache_respostas:
         return cache_respostas[chave_cache]
 
     try:
-        response = await chamar_api_provider(abordagem, modelo, temperatura, system_prompt, prompt)
+        response = await chamar_api_provider(
+            abordagem, 
+            modelo, 
+            temperatura, 
+            system_prompt, 
+            prompt,
+            enviar_system_prompt_vazio=enviar_system_prompt_vazio,
+        )
         resposta_limpa = response.strip().rstrip('.').strip('"') if response else None
 
         if resposta_limpa:
@@ -53,7 +83,20 @@ async def obter_resposta_modelo(cfg, contador, cache_respostas, system_prompt, p
             if tentativa < max_tentativas:
                 logger.info(f"Fazendo retry {tentativa + 1}/{max_tentativas}...")
                 await asyncio.sleep(0.5)
-                return await obter_resposta_modelo(cfg, contador, cache_respostas, system_prompt, prompt, abordagem, modelo, temperatura, repeticao, tentativa + 1, max_tentativas)
+                return await obter_resposta_modelo(
+                    cfg=cfg, 
+                    contador=contador, 
+                    cache_respostas=cache_respostas, 
+                    system_prompt=system_prompt, 
+                    prompt=prompt, 
+                    abordagem=abordagem, 
+                    modelo=modelo, 
+                    temperatura=temperatura, 
+                    repeticao=repeticao,
+                    enviar_apenas_como_user=enviar_apenas_como_user,
+                    enviar_system_prompt_vazio=enviar_system_prompt_vazio,
+                    tentativa=tentativa + 1, 
+                    max_tentativas=max_tentativas)
             else:
                 logger.error(f"Máximo de tentativas ({max_tentativas}) atingido para resposta inválida")
                 contador[0] = atualizar_cache_e_salvar_se_necessario(contador[0], chave_cache, "resposta_invalida", cache_respostas, cfg.ARQUIVO_CACHE, INTERVALO_SALVAMENTO, logger) 
@@ -65,7 +108,20 @@ async def obter_resposta_modelo(cfg, contador, cache_respostas, system_prompt, p
         if tentativa < max_tentativas:
             logger.info(f"Fazendo retry {tentativa + 1}/{max_tentativas} após erro...")
             await asyncio.sleep(1.0)  # Espera um pouco mais em caso de erro
-            return await obter_resposta_modelo(cfg, contador, cache_respostas, system_prompt, prompt, abordagem, modelo, temperatura, repeticao, tentativa + 1, max_tentativas)
+            return await obter_resposta_modelo(
+                cfg=cfg, 
+                contador=contador, 
+                cache_respostas=cache_respostas, 
+                system_prompt=system_prompt, 
+                prompt=prompt, 
+                abordagem=abordagem, 
+                modelo=modelo, 
+                temperatura=temperatura, 
+                repeticao=repeticao,
+                enviar_apenas_como_user=enviar_apenas_como_user,
+                enviar_system_prompt_vazio=enviar_system_prompt_vazio,
+                tentativa=tentativa + 1, 
+                max_tentativas=max_tentativas)
         else:
             logger.error(f"Máximo de tentativas ({max_tentativas}) atingido. Retornando erro_api")
             contador[0] = atualizar_cache_e_salvar_se_necessario(contador[0], chave_cache, "erro_api", cache_respostas, cfg.ARQUIVO_CACHE, INTERVALO_SALVAMENTO, logger) 
@@ -103,17 +159,53 @@ async def run(cfg):
         """Wrapper que controla concorrência."""
         async with semaphore:
             model_name, provider = modelo
-            resposta = await obter_resposta_modelo(
-                cfg, contador, cache_respostas, 
-                system["texto"], prompt["texto"], 
-                provider, model_name, temperatura, repeticao
+
+            system_text = system["texto"]
+            user_text = prompt["texto"]
+
+            enviar_apenas_como_user = cfg.get(
+                "ENVIAR_APENAS_COMO_USER",
+                False
             )
+            enviar_system_prompt_vazio = cfg.get(
+                "ENVIAR_SYSTEM_PROMPT_VAZIO",
+                True
+            )
+
+            if enviar_apenas_como_user:
+                user_text = "\n".join(
+                    texto
+                    for texto in (system_text, user_text)
+                    if texto and texto.strip()
+                )
+                system_text = ""
+
+            resposta = await obter_resposta_modelo(
+                cfg=cfg,
+                contador=contador,
+                cache_respostas=cache_respostas,
+                system_prompt=system_text,
+                prompt=user_text,
+                abordagem=provider,
+                modelo=model_name,
+                temperatura=temperatura,
+                repeticao=repeticao,
+                enviar_apenas_como_user=enviar_apenas_como_user,
+                enviar_system_prompt_vazio=enviar_system_prompt_vazio,
+            )
+
             return {
-                "modelo": model_name, 
-                "temperatura": temperatura, 
+                "modelo": model_name,
+                "temperatura": temperatura,
                 "repeticao": repeticao,
-                "system_prompt": system["chaves_usadas"], 
+                "system_prompt": system["chaves_usadas"],
                 "user_prompt": prompt["chaves_usadas"],
+                "system_prompt_text": system["texto"],
+                "user_prompt_text": prompt["texto"],
+                "sended_system_prompt_text": system_text,
+                "sended_user_prompt_text": user_text,
+                "enviar_apenas_como_user": enviar_apenas_como_user,
+                "enviar_system_prompt_vazio": enviar_system_prompt_vazio,
                 "resposta_raw": resposta
             }
     
