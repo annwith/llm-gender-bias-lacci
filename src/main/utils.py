@@ -21,10 +21,10 @@ MARITACA_API_KEY = os.getenv("MARITACA_API_KEY")
 OLLAMA_HOST = os.getenv("OLLAMA_HOST")
 
 # Inicializar clientes de API
-client_grok = Client(api_key=GROK_API_KEY)
-client_ollama = ollama.Client(host=OLLAMA_HOST)
-client_openai = OpenAI(api_key=OPEN_AI_API_KEY)
-client_genai = genai.Client(api_key=GEMINI_API_KEY)
+# client_grok = Client(api_key=GROK_API_KEY)
+# client_ollama = ollama.Client(host=OLLAMA_HOST)
+# client_openai = OpenAI(api_key=OPEN_AI_API_KEY)
+# client_genai = genai.Client(api_key=GEMINI_API_KEY)
 cliente_maritaca = OpenAI(api_key=MARITACA_API_KEY, base_url="https://chat.maritaca.ai/api")
 client_deepinfra = AsyncOpenAI(api_key=DEEPINFRA_API_KEY, base_url="https://api.deepinfra.com/v1/openai")
     
@@ -37,17 +37,38 @@ def gerar_chave_cache(modelo, system_prompt, prompt, temperatura, repeticao, env
     return hashlib.md5(chave.encode()).hexdigest()
 
 def carregar_cache(ARQUIVO_CACHE, logger):
-    """Carrega o cache de respostas anteriores."""
-    if os.path.exists(ARQUIVO_CACHE):
-        try:
-            with open(ARQUIVO_CACHE, 'rb') as f:
-                cache = pickle.load(f)
-                logger.info(f"Cache carregado com {len(cache)} entradas")
-                return cache
-        except Exception as e:
-            logger.warning(f"Erro ao carregar cache: {e}")
-            return {}
-    return {}
+    """Carrega respostas válidas do cache."""
+    if not os.path.exists(ARQUIVO_CACHE):
+        return {}
+
+    try:
+        with open(ARQUIVO_CACHE, "rb") as f:
+            cache = pickle.load(f)
+
+        valores_invalidos = {"erro_api", "resposta_invalida"}
+
+        chaves_invalidas = [
+            chave
+            for chave, resposta in cache.items()
+            if resposta in valores_invalidos
+        ]
+
+        for chave in chaves_invalidas:
+            del cache[chave]
+
+        if chaves_invalidas:
+            logger.warning(
+                "Ignoradas %d entradas inválidas do cache; "
+                "elas serão tentadas novamente.",
+                len(chaves_invalidas),
+            )
+
+        logger.info("Cache carregado com %d respostas válidas", len(cache))
+        return cache
+
+    except Exception as e:
+        logger.warning(f"Erro ao carregar cache: {e}")
+        return {}
 
 def salvar_cache(cache, ARQUIVO_CACHE, logger):
     """Salva o cache de respostas."""
