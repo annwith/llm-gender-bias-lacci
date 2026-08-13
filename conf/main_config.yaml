@@ -5,8 +5,8 @@ MODELOS_A_AVALIAR:
   # # - ["google/gemma-3-4b-it", "deepinfra"]
   # # - ["google/gemma-3-12b-it", "deepinfra"]
   # # - ["google/gemma-3-27b-it", "deepinfra"]
-  - ["google/gemma-4-31B-it", "deepinfra"] # US$0.13 input / US$0.38 output por 1M tokens
-  # - ["sabia-4", "maritaca"]
+  # # - ["google/gemma-4-31B-it", "deepinfra"] # US$0.13 input / US$0.38 output por 1M tokens
+  # # - ["sabia-4", "maritaca"]
   # - ["meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8", "deepinfra"] # US$0.15 input / US$0.60 output por 1M tokens
   # # - ["NousResearch/Hermes-3-Llama-3.1-405B", "deepinfra"]
   # - ["deepseek-ai/DeepSeek-V4-Pro", "deepinfra"] # US$1.30 input / US$2.60 output por 1M tokens; US$0.10 cached input
@@ -19,13 +19,13 @@ MODELOS_A_AVALIAR:
   # - ["mistralai/Mistral-Small-3.2-24B-Instruct-2506", "deepinfra"] # US$0.075 input / US$0.20 output por 1M tokens
   # - ["Qwen/Qwen3-235B-A22B-Instruct-2507", "deepinfra"] # US$0.071 input / US$0.10 output por 1M tokens
   # # - ["Qwen/Qwen3-Max", "deepinfra"] # US$1.20 input / US$6.00 output por 1M tokens; US$0.24 cached input
-  # - ["nvidia/NVIDIA-Nemotron-3-Super-120B-A12B", "deepinfra"] # US$0.10 input / US$0.50 output por 1M tokens
+  # # - ["nvidia/NVIDIA-Nemotron-3-Super-120B-A12B", "deepinfra"] # US$0.10 input / US$0.50 output por 1M tokens
 
 TEMPERATURES: [0.0]
 REPETICOES_POR_TEMP: 1
 
-ARQUIVO_CACHE: "data/generated_recommendations.pkl"
-ARQUIVO_SAIDA: "data/generated_recommendations.csv"
+ARQUIVO_CACHE: "data/fixed_prompts_generated_recommendations.pkl"
+ARQUIVO_SAIDA: "data/fixed_prompts_generated_recommendations.csv"
 
 ENVIAR_APENAS_COMO_USER: true
 ENVIAR_SYSTEM_PROMPT_VAZIO: true
