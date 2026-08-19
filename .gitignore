@@ -2,4 +2,5 @@
 !.pixi/config.toml
 .env
 /outputs
+/src/analysis/figures
 __pycache__/
