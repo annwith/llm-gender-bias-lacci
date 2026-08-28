@@ -20,7 +20,7 @@ Models are prompted to generate structured profiles of Brazilian adults who comp
 - Brazilian state;
 - monthly income;
 - attributed sex;
-- attributed race/color.
+- race/color.
 
 The goal is to analyze how LLMs represent demographic groups across undergraduate fields and how these representations compare with IBGE statistics.
 
