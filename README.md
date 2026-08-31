@@ -1,34 +1,55 @@
 # Gender and Race/Color Biases in LLM Recommendations for Brazilian Undergraduate Fields
 
-This repository contains the code, prompts, configurations, generated outputs, and analysis notebooks for the paper:
+Code, prompts, configurations, generated outputs, and analysis notebooks for the paper *Who Gets Recommended What? Gender and Race/Color Biases in LLM Recommendations for Brazilian Undergraduate Fields*.
 
-> **Who Gets Recommended What? Gender and Race/Color Biases in LLM Recommendations for Brazilian Undergraduate Fields**  
-> Submitted to IEEE LACCI 2026.
-
-The study evaluates whether large language models (LLMs) produce demographically biased representations and recommendations for Brazilian undergraduate fields. We focus on gender and race/color categories in the Brazilian context and compare model outputs with external statistics from IBGE.
+The paper was accepted for the **2026 IEEE Latin American Conference on Computational Intelligence (LA-CCI)**, to be held in Lima, Peru, on November 3–6, 2026.
 
 ## Overview
 
-The repository supports two main experiments.
+This study audits gender and race/color bias in LLM outputs about Brazilian undergraduate fields. It uses the Brazilian Institute of Geography and Statistics (IBGE) as a **descriptive empirical reference**, not as a normative fairness target. All prompts are in Brazilian Portuguese and all model runs use temperature 0 with one response per experimental condition.
 
-### 1. Demographic attribution task
+The camera-ready paper evaluates eight instruction-tuned LLMs:
 
-Models are prompted to generate structured profiles of Brazilian adults who completed a specific undergraduate field. Each generated profile includes demographic and socioeconomic attributes such as:
+- DeepSeek-V4-Pro;
+- Gemini-2.5-Flash;
+- Qwen3-235B-A22B;
+- GPT-OSS-120B;
+- Sabia-4;
+- Llama-4-Maverick;
+- Mistral-Small-24B; and
+- Gemma-4-31B.
 
-- name;
-- age;
-- Brazilian state;
-- monthly income;
-- attributed sex;
-- race/color.
+## Experiments
 
-The goal is to analyze how LLMs represent demographic groups across undergraduate fields and how these representations compare with IBGE statistics.
+### 1. Demographic attribution
 
-### 2. Educational recommendation task
+For each of 87 detailed undergraduate fields, every model generates a JSON profile of a hypothetical Brazilian adult who completed that field. The profile includes name, age, state, monthly income, attributed sex, and race/color.
 
-Models are prompted as if the user were a final-year high-school student in Brazil seeking advice about undergraduate fields. The prompt varies demographic cues such as gender and race/color, and may also include an academic-interest signal based on ENEM knowledge areas.
+The paper analyzes 696 profiles (87 fields × 8 models) and compares the attributed sex and race/color distributions with the corresponding IBGE distributions. The category with no people in the IBGE reference data is excluded from field-level comparisons that require proportions, leaving 86 non-empty fields for those analyses.
 
-The model is instructed to recommend exactly three undergraduate fields from a fixed list. We analyze whether demographic cues affect the exposure of different fields in the recommendations.
+### 2. Demographic-conditioned educational recommendations
+
+Models advise a Brazilian student in the final year of high school and must recommend exactly three undergraduate fields from a fixed list. Prompts vary along two axes:
+
+- **Social markers (18 conditions):** two gender-only markers, five race/color-only markers, ten joint gender-by-race/color markers, and one condition without demographic information.
+- **Academic interest (5 conditions):** the four ENEM knowledge areas—Languages, Human Sciences, Natural Sciences, and Mathematics—and a condition with no declared interest.
+
+This produces 90 prompt conditions per model and 720 recommendations overall (90 × 8). Recommendations are analyzed with a rank-weighted exposure metric that gives weights 3, 2, and 1 to the first, second, and third recommendation, respectively.
+
+The paper reports that demographic differences in recommendation exposure are most pronounced when the prompt contains no academic-interest information. Providing an ENEM interest area constrains the recommendation space and reduces those differences.
+
+## Paper-aligned artifacts
+
+The files below reproduce the data and analyses reported in the camera-ready paper.
+
+| Experiment | Configuration | Generated outputs | Analysis notebook |
+| --- | --- | --- | --- |
+| Demographic attribution | `conf/profile_config.yaml` | `data/generated_profiles.csv`, `data/generated_profiles.jsonl`, `data/generated_profiles.pkl` | `src/analysis/processing_profile_results.ipynb` |
+| Educational recommendations | `conf/recommendation_config.yaml` | `data/fixed_prompts_generated_recommendations.{csv,jsonl,pkl}`, `data/fixed_prompts_gemma_generated_recommendations.{csv,jsonl,pkl}`, `data/fixed_prompts_sabia_generated_recommendations.{csv,jsonl,pkl}` | `src/analysis/processing_recommendation_results_fixed_prompts.ipynb` |
+
+The camera-ready recommendation results are split across three model-output files: `fixed_prompts_generated_recommendations.jsonl` contains 540 records from six models, while `fixed_prompts_gemma_generated_recommendations.jsonl` and `fixed_prompts_sabia_generated_recommendations.jsonl` contribute 90 records each. Together they contain the 720 recommendations analyzed in the paper. Use these files, their corresponding CSV/cache files, `recommendation_config.yaml`, and `processing_recommendation_results_fixed_prompts.ipynb` for the camera-ready experiment.
+
+The raw profile-output files contain 783 records because they also retain 87 outputs from NVIDIA Nemotron. That model is excluded from the paper's eight-model attribution analysis because of its high rate of invalid responses; the attribution notebook applies this exclusion.
 
 ## Repository structure
 
@@ -38,101 +59,68 @@ The model is instructed to recommend exactly three undergraduate fields from a f
 │   ├── main_config.yaml
 │   ├── profile_config.yaml
 │   └── recommendation_config.yaml
-│
 ├── data/
-│   ├── generated_profiles.csv
-│   ├── generated_profiles.jsonl
-│   ├── generated_profiles.pkl
-│   ├── generated_recommendations.csv
-│   ├── generated_recommendations.jsonl
-│   ├── generated_recommendations.pkl
+│   ├── generated_profiles.{csv,jsonl,pkl}
+│   ├── fixed_prompts_generated_recommendations.{csv,jsonl,pkl}
+│   ├── fixed_prompts_gemma_generated_recommendations.{csv,jsonl,pkl}
+│   ├── fixed_prompts_sabia_generated_recommendations.{csv,jsonl,pkl}
+│   ├── tables/
+│   │   └── ibge_undergraduate_fields.xlsx
 │   ├── undergraduate_fields_for_profile.yaml
-│   ├── undergraduate_fields_for_recommendation.yaml
-│   └── tables/
-│       └── ibge_undergraduate_fields.xlsx
-│
+│   └── undergraduate_fields_for_recommendation.yaml
 ├── src/
 │   ├── main/
 │   │   └── utils.py
 │   └── analysis/
 │       ├── preprocessing_undergraduate_fields.ipynb
 │       ├── processing_profile_results.ipynb
-│       └── processing_recommendation_results.ipynb
-│
+│       └── processing_recommendation_results_fixed_prompts.ipynb
 ├── run_main.py
 ├── pixi.toml
-├── pixi.lock
-├── LICENSE
-└── README.md
+└── pixi.lock
 ```
 
 ## Data
 
-### 1. The data/ directory includes:
+`data/tables/ibge_undergraduate_fields.xlsx` contains the processed data derived from IBGE table 10065: people with completed higher education by detailed field, sex, and color/race (2022 Demographic Census). The detailed field lists in `undergraduate_fields_for_profile.yaml` and `undergraduate_fields_for_recommendation.yaml` support preprocessing and prompt construction.
 
-- generated_profiles.csv: generated outputs for the demographic attribution task;
-- generated_profiles.jsonl: JSONL version of the generated profile outputs;
-- generated_profiles.pkl: cache file used during profile generation;
-- generated_recommendations.csv: generated outputs for the recommendation task;
-- generated_recommendations.jsonl: JSONL version of the generated recommendation outputs;
-- generated_recommendations.pkl: cache file used during recommendation generation;
-- tables/ibge_undergraduate_fields.xlsx: processed IBGE reference data used in the analyses;
-- undergraduate_fields_for_profile.yaml: undergraduate-field list used in the profile-generation task;
-- undergraduate_fields_for_recommendation.yaml: undergraduate-field list used in the recommendation task.
-
-## Configuration files
-
-### 1. The experiments are controlled through Hydra configuration files in conf/.
-
-- profile_config.yaml: configuration for the demographic attribution task.
-- recommendation_config.yaml: configuration for the educational recommendation task.
-- main_config.yaml: default configuration used by run_main.py.
-
-### 2. The configuration files specify:
-
-- models to evaluate;
-- provider/backend for each model;
-- temperature;
-- number of repetitions;
-- output paths;
-- cache paths;
-- system prompts;
-- user prompts;
-- demographic conditions;
-- undergraduate-field lists;
-- academic-interest conditions.
+The `.csv` files are tabular outputs, the `.jsonl` files preserve one generated record per line, and the `.pkl` files are response caches used by the experiment runner.
 
 ## Environment setup
 
-This repository uses pixi for environment management. Install the environment with:
+This project uses [pixi](https://pixi.sh/) for environment management.
 
 ```bash
 pixi install
 ```
-Then activate the environment:
+
+Commands can then be run through pixi, for example:
 
 ```bash
-pixi shell
+pixi run python run_main.py --config-name profile_config
+pixi run python run_main.py --config-name recommendation_config
 ```
 
-Alternatively, commands can be run directly with:
+The runner queries external model providers. Configure the required API credentials in a local `.env` file before running it, and adjust the cache/output paths in the configuration if you do not want to replace the supplied artifacts. `main_config.yaml` is the default Hydra configuration; the two commands above select the paper-aligned experiment configurations explicitly.
 
-```bash
-pixi run <task-name>
+## Citation
+
+Please cite the accepted conference paper as follows:
+
+```bibtex
+@inproceedings{midlej2026who,
+  author    = {Juliana Midlej and Anderson Luis Bento Soares and Leonardo Nascimento Ferreira and Helio Pedrini and Zanoni Dias},
+  title     = {Who Gets Recommended What? Gender and Race/Color Biases in {LLM} Recommendations for Brazilian Undergraduate Fields},
+  booktitle = {2026 IEEE Latin American Conference on Computational Intelligence ({LA-CCI})},
+  year      = {2026},
+  month     = nov,
+  address   = {Lima, Peru},
+  note      = {Accepted for publication}
+}
 ```
 
-## Running experiments
+The proceedings DOI and page range had not yet been assigned at the camera-ready stage, so they are intentionally not included above. They should be added once the IEEE Xplore record is available.
 
-The main experiment runner is:
+## License
 
-```bash
-python run_main.py
-```
-
-By default, this uses the Hydra configuration specified in run_main.py.
-
-To run a specific configuration, use:
-
-```bash
-python run_main.py --config-name some_config
-```
+See [LICENSE](LICENSE).
